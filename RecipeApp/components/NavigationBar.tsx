@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-const NavigationBar = () => {
+const NavigationBar: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home</Text>

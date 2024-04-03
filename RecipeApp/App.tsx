@@ -1,13 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { recipes } from './data/recipes';
 import RecipeCard from './components/RecipeCard';
 import RecipeDetails from './components/RecipeDetails';
-import NavigationBar from './components/NavigationBar'; 
-import Home from './components/Home'; 
+import NavigationBar from './components/NavigationBar';
+import Home from './components/Home';
 
-
-const App = () => {
+const App: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image 

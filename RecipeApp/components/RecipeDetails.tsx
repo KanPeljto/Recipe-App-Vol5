@@ -1,7 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 
-const RecipeDetails = ({ recipe }) => {
+interface Recipe {
+  title: string;
+  steps: string[];
+}
+
+interface RecipeDetailsProps {
+  recipe: Recipe;
+}
+
+const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipe }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Steps to Make {recipe.title}</Text>

@@ -1,7 +1,17 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 
-const RecipeCard = ({ recipe }) => {
+interface Recipe {
+  image: any;
+  title: string;
+  calories: number;
+}
+
+interface RecipeCardProps {
+  recipe: Recipe;
+}
+
+const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
   return (
     <View style={styles.recipeCardContainer}>
       <Image source={recipe.image} style={styles.recipeImage} />
