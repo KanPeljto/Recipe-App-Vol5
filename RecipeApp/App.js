@@ -1,58 +1,51 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView, Image } from 'react-native';
 import { recipes } from './data/recipes';
 import RecipeCard from './components/RecipeCard';
-import { ScrollView } from 'react-native';
-import { Image } from 'react-native';
-import Recipe from './components/Recipe';
+import RecipeDetails from './components/RecipeDetails';
+import NavigationBar from './components/NavigationBar'; 
+import Home from './components/Home'; 
+
 
 const App = () => {
   return (
     <View style={styles.container}>
       <Image 
-      source={require('./assets/central-icon.png')}
-      style={styles.icon}
-    />
-
-    <ScrollView style={styles.scrollView}>
-      {recipes.map(recipe => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
-      ))}
-    
-      
-    </ScrollView>
+        source={require('./assets/central-icon.png')}
+        style={styles.icon}
+      />
+      <NavigationBar/>
+      <Home/>
+      {/* <ScrollView style={styles.scrollView}>
+        {recipes.map(recipe => (
+          <View key={recipe.id}>
+            <RecipeCard recipe={recipe} />
+            <RecipeDetails recipe={recipe} />
+          </View>
+        ))}
+      </ScrollView> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
     backgroundColor: '#f5fcff',
   },
-
-  iconBarContainer: {
-    flex:1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: 'orange',
-  },
-
   icon: {
-    width:50,
+    width: 50,
     height: 50,
     marginBottom: 40,
-    backgroundColor:'red'
+    backgroundColor: 'red',
   },
-
   scrollView: {
-    width:'80%',
-  }
-  
+    width: '80%',
+  },
 });
 
 export default App;
