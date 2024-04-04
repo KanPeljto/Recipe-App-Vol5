@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, ScrollView } from 'react-native';
 import { recipes } from './data/recipes';
 import RecipeCard from './components/RecipeCard';
 import RecipeDetails from './components/RecipeDetails';
@@ -9,11 +9,11 @@ import Home from './components/Home';
 const App: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Image 
+      {/* <Image 
         source={require('./assets/central-icon.png')}
         style={styles.icon}
       />
-      <NavigationBar/>
+      <NavigationBar/> */}
       <Home/>
       {/* <ScrollView style={styles.scrollView}>
         {recipes.map(recipe => (
