@@ -11,6 +11,7 @@ export const recipes = [
       'Simmer for 20-30 minutes until chicken is cooked through and flavors are melded together.',
       'Serve hot and enjoy!',
     ],
+    author:'johncooking1337'
   },
   {
     id: 2,

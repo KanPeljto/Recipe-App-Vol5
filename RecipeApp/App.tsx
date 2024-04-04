@@ -7,6 +7,7 @@ import NavigationBar from './components/NavigationBar';
 import Home from './components/Home';
 import Favorites from './components/Favorites';
 import CategoryIcons from './components/CategoryIcons';
+import ProfileTab from './components/ProfileTab';
 
 const App: React.FC = () => {
   return (
@@ -15,19 +16,21 @@ const App: React.FC = () => {
         source={require('./assets/central-icon.png')}
         style={styles.icon}
       /> */}
-      <NavigationBar/>
+      {/* <NavigationBar/> */}
       {/* <Home/> */}
       {/* <ScrollView style={styles.scrollView}>
        
       </ScrollView> */}
       {/* <Favorites/> */}
-      <CategoryIcons/>
+      {/* <CategoryIcons/>
       {recipes.map(recipe => (
           <View key={recipe.id}>
             <RecipeCard recipe={recipe} />
           </View>
         ))}
-      
+       */}
+
+       <ProfileTab/>
     </View>
   );
 };
