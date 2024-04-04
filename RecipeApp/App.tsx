@@ -5,6 +5,8 @@ import RecipeCard from './components/RecipeCard';
 import RecipeDetails from './components/RecipeDetails';
 import NavigationBar from './components/NavigationBar';
 import Home from './components/Home';
+import Favorites from './components/Favorites';
+import CategoryIcons from './components/CategoryIcons';
 
 const App: React.FC = () => {
   return (
@@ -12,27 +14,30 @@ const App: React.FC = () => {
       {/* <Image 
         source={require('./assets/central-icon.png')}
         style={styles.icon}
-      />
-      <NavigationBar/> */}
-      <Home/>
+      /> */}
+      <NavigationBar/>
+      {/* <Home/> */}
       {/* <ScrollView style={styles.scrollView}>
-        {recipes.map(recipe => (
+       
+      </ScrollView> */}
+      {/* <Favorites/> */}
+      <CategoryIcons/>
+      {recipes.map(recipe => (
           <View key={recipe.id}>
             <RecipeCard recipe={recipe} />
-            <RecipeDetails recipe={recipe} />
           </View>
         ))}
-      </ScrollView> */}
+      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex:1,
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
     padding: 10,
     backgroundColor: '#f5fcff',
   },

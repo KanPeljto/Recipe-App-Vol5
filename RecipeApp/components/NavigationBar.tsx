@@ -8,6 +8,7 @@ const NavigationBar: React.FC = () => {
       <Text style={styles.text}>Recipes</Text>
       <Text style={styles.text}>Favorites</Text>
       <Text style={styles.text}>Profile</Text>
+      <Text style={styles.text}>Register</Text>
     </View>
   );
 };
@@ -20,11 +21,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'darkgreen',
     height: 50,
     width: '100%',
+    marginTop:30
   },
   text: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
+    marginEnd:"5%",
+    marginLeft:"5%"
   },
 });
 
