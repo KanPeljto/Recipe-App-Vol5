@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons'; // Import FontAwesome5 instead of FontAwesome
+import { FontAwesome5 } from '@expo/vector-icons'; 
+import { userData } from '../data/userinfo';
 
 const RecipeDetails = ({ recipe }) => {
   return (
     <ScrollView style={styles.container}>
       <Image source={recipe.image} style={styles.image} />
       <Text style={styles.title}>{recipe.title}</Text>
+      <Image source={userData.avatar} style={styles.avatar} />
       <Text style={styles.authorTitle}>By {recipe.author}</Text>
       <Text style={styles.ingredientsTitle}>Ingredients needed:</Text>
       {recipe.ingredients.map((ingredient, index) => (
@@ -52,6 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 20,
     textAlign: 'center',
+    alignSelf:"flex-start",
     paddingBottom: 10,
     fontStyle: 'italic',
   },
@@ -82,7 +85,14 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     marginTop:15,
     alignSelf:"center"
-  }
+  },
+  avatar: {
+    width: 60, 
+    height: 60,
+    borderRadius: 30,
+    marginBottom: 10,
+    marginTop:10
+  },
 });
 
 export default RecipeDetails;
