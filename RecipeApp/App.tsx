@@ -31,9 +31,14 @@ const App: React.FC = () => {
           </View>
         ))} */}
 
-        <Register/>
+      <RecipeDetails recipe={recipes[0]} />
+
+        {/* <Register/> */}
 
         {/* <Login/> */}
+
+        
+
       
 
        {/* <ProfileTab/> */}

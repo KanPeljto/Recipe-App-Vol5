@@ -4,6 +4,7 @@ export const recipes = [
     title: 'Chicken Soup',
     image: require('../assets/chicken-soup.jpeg'),
     calories: 300,
+    ingredients: ['olive oil', 'onions', 'carrots', 'celery', 'chicken broth', 'diced chicken', 'salt', 'pepper', 'thyme'],
     steps: [
       'In a large pot, heat olive oil over medium heat.',
       'Add diced onions, carrots, and celery. Cook until softened, about 5 minutes.',
@@ -18,6 +19,7 @@ export const recipes = [
     title: 'Beef Stew',
     image: require('../assets/beef-stew.jpeg'),
     calories: 500,
+    ingredients: ['olive oil', 'onions', 'carrots', 'celery', 'cubed beef', 'potatoes', 'beef broth', 'salt', 'pepper', 'rosemary'],
     steps: [
       'Heat olive oil in a large pot over medium-high heat.',
       'Add diced onions, carrots, and celery. Cook until softened, about 5 minutes.',
@@ -31,6 +33,7 @@ export const recipes = [
     title: 'Vegetable Salad',
     image: require('../assets/vegetable-salad.jpeg'),
     calories: 100,
+    ingredients: ['lettuce', 'tomatoes', 'cucumbers', 'bell peppers', 'salad dressing'],
     steps: [
       'Wash and chop your favorite vegetables (such as lettuce, tomatoes, cucumbers, and bell peppers).',
       'Toss vegetables in a large bowl.',
@@ -43,6 +46,7 @@ export const recipes = [
     title: 'Pizza',
     image: require('../assets/pizza.jpeg'),
     calories: 800,
+    ingredients: ['pizza dough', 'flour', 'pizza sauce', 'cheese', 'pepperoni', 'vegetables'],
     steps: [
       'Preheat your oven to 450°F (230°C).',
       'Roll out pizza dough on a floured surface to desired thickness.',
