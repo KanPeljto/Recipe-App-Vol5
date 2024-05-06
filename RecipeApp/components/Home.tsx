@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { recipes } from '../data/recipes';
 import NavigationBar from './NavigationBar';
 
@@ -24,9 +24,9 @@ const Home: React.FC = () => {
         <Text style={styles.aboutText}>Recipe App is an application that provides you with new recipe ideas.</Text>
       </View>
 
-      <View style={styles.box}>
+      <TouchableOpacity style={styles.box}>
         <Text style={styles.textMessage}>See More</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

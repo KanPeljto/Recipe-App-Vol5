@@ -10,12 +10,13 @@ import CategoryIcons from './components/CategoryIcons';
 import ProfileTab from './components/ProfileTab';
 import Register from './components/Register';
 import Login from './components/Login';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 
-//I had a lot of issues making the repository and then later creating a new branch, 
-//for some reason it would commit to a project from last year? 
-//So i commited regularily in the main branch, 
-//but the future branches will be created normally as i now have the main branch to use as source 
+
+
+const Tab= createMaterialTopTabNavigator();
 
 const App: React.FC = () => {
   return (
@@ -24,20 +25,32 @@ const App: React.FC = () => {
         source={require('./assets/central-icon.png')}
         style={styles.icon}
       /> */}
-      <NavigationBar/>
-      {/* <Home/> */}
+
+    
+
+      
+      <NavigationContainer>
+        <Tab.Navigator>
+        <Tab.Screen name='Home' component={Home}/>
+        <Tab.Screen name='Profile' component={ProfileTab}/>
+        </Tab.Navigator>
+      </NavigationContainer>
+      {/* <NavigationBar/> */}
+      <Home/>
       {/* <ScrollView style={styles.scrollView}>
        
       </ScrollView> */}
       {/* <Favorites/> */}
-      {/* <CategoryIcons/> */}
-      {/* {recipes.map(recipe => (
+      {/* <CategoryIcons/>
+      <ScrollView>
+      {recipes.map(recipe => (
           <View key={recipe.id}>
             <RecipeCard recipe={recipe} />
           </View>
-        ))} */}
+        ))}
+        </ScrollView> */}
 
-      <RecipeDetails recipe={recipes[0]} />
+      {/* <RecipeDetails recipe={recipes[0]} /> */}
 
         {/* <Register/> */}
 
