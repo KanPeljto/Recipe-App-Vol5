@@ -2,8 +2,14 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { recipes } from '../data/recipes';
 import NavigationBar from './NavigationBar';
+import {createStackNavigator} from '@react-navigation/stack';
+import RecipesTab from './RecipesTab';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const Home: React.FC = () => {
+  const navigation= useNavigation<any>();
   return (
     <View style={styles.container}>
       {/* <Image source={require('../assets/background3.jpeg')} style={styles.backgroundImage}/> */}
@@ -24,7 +30,7 @@ const Home: React.FC = () => {
         <Text style={styles.aboutText}>Recipe App is an application that provides you with new recipe ideas.</Text>
       </View>
 
-      <TouchableOpacity style={styles.box}>
+      <TouchableOpacity style={styles.box} onPress={()=>navigation.navigate("Recipes")}>
         <Text style={styles.textMessage}>See More</Text>
       </TouchableOpacity>
     </View>
@@ -91,3 +97,4 @@ const styles = StyleSheet.create({
 
 
 export default Home;
+  
