@@ -13,8 +13,19 @@ import Login from './components/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import RecipesTab from './components/RecipesTab';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Tab = createMaterialTopTabNavigator();
+const Stack= createStackNavigator<any>();
+
+const RecipeStack=()=>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name='RecipesTab' component={RecipesTab}/>
+      <Stack.Screen name="RecipeDetails" component={RecipeDetails} />
+    </Stack.Navigator>
+  )
+}
 
 const App: React.FC = () => {
   return (
@@ -22,7 +33,7 @@ const App: React.FC = () => {
       <NavigationContainer>
         <Tab.Navigator style={styles.tabNavigator}>
           <Tab.Screen name='Home' component={Home}/>
-          <Tab.Screen name='Recipes' component={RecipesTab} />
+          <Tab.Screen name='Recipes' component={RecipeStack} />
           <Tab.Screen name='Profile' component={ProfileTab}/>
         </Tab.Navigator>
       </NavigationContainer>

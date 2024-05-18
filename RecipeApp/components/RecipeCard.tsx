@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 interface Recipe {
   id: number;
@@ -13,14 +14,19 @@ interface RecipeCardProps {
 }
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
+  const navigation = useNavigation<any>();
+
   return (
-    <View style={styles.recipeCardContainer}>
+    <TouchableOpacity
+      style={styles.recipeCardContainer}
+      onPress={() => navigation.navigate('RecipeDetails', { recipeId: recipe.id })}
+    >
       <Image source={recipe.image} style={styles.recipeImage} />
       <View style={styles.recipeInfoContainer}>
         <Text style={styles.recipeTitle}>{recipe.title}</Text>
         <Text style={styles.recipeCalories}>{recipe.calories} calories</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -16,7 +16,7 @@ const ProfileTab: React.FC = () => {
     
     <View style={styles.container}>
         <View style={styles.navBar}>
-        <NavigationBar/>
+        {/* <NavigationBar/> */}
         </View>
       <View style={styles.profileContainer}>
         <Image source={userData.avatar} style={styles.avatar} />
@@ -28,7 +28,7 @@ const ProfileTab: React.FC = () => {
         </View>
       </View>
       <View style={styles.statsContainer}>
-        <Text style={styles.statsText}>Recipes by {userData.userName}: {userRecipesCount}</Text>
+        <Text style={styles.statsText}>Recipes by {userData.username}: {userRecipesCount}</Text>
         <ScrollView>
           {userRecipes.map(recipe => (
             <RecipeCard key={recipe.id} recipe={recipe} />
