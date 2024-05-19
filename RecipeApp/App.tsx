@@ -23,6 +23,7 @@ const RecipeStack=()=>{
     <Stack.Navigator>
       <Stack.Screen name='RecipesTab' component={RecipesTab}/>
       <Stack.Screen name="RecipeDetails" component={RecipeDetails} />
+      <Stack.Screen name="ProfileTab" component={ProfileTab}/>
     </Stack.Navigator>
   )
 }
@@ -34,7 +35,7 @@ const App: React.FC = () => {
         <Tab.Navigator style={styles.tabNavigator}>
           <Tab.Screen name='Home' component={Home}/>
           <Tab.Screen name='Recipes' component={RecipeStack} />
-          <Tab.Screen name='Profile' component={ProfileTab}/>
+          {/* <Tab.Screen name='Profile' component={ProfileTab}/> */}
         </Tab.Navigator>
       </NavigationContainer>
     </View>

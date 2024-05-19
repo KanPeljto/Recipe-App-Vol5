@@ -1,17 +1,20 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { recipes } from '../data/recipes';  
 
 type RootStackParamList = {
   RecipeDetails: { recipeId: number };
+  ProfileTab:{ username : string };
 };
 
 type RecipeDetailsRouteProp = RouteProp<RootStackParamList, 'RecipeDetails'>;
 
 
+
 const RecipeDetails = () => {
+  const navigation=useNavigation<any>();
   const route = useRoute<RecipeDetailsRouteProp>();
   const {recipeId}=route.params;
   const recipe = recipes.find(r => r.id === recipeId);  
@@ -23,11 +26,18 @@ const RecipeDetails = () => {
     );
   }
 
+  const navigateToProfile=( username : string )=>{
+    navigation.navigate('ProfileTab', { username });
+  };
+
   return (
     <ScrollView style={styles.container}>
       <Image source={recipe.image} style={styles.image} />
       <Text style={styles.title}>{recipe.title}</Text>
+      <TouchableOpacity onPress={()=>navigateToProfile(recipe.author)}>
       <Text style={styles.authorTitle}>By {recipe.author}</Text>
+      </TouchableOpacity>
+      
       <Text style={styles.ingredientsTitle}>Ingredients needed:</Text>
       {recipe.ingredients.map((ingredient, index) => (
         <Text key={index} style={styles.ingredient}>{index + 1}. {ingredient}</Text>
