@@ -5,6 +5,7 @@ import RecipeCard from './RecipeCard';
 import NavigationBar from './NavigationBar';
 import { recipes } from '../data/recipes';
 import { RouteProp, useRoute } from '@react-navigation/native';
+import { useUserProfile } from '../hooks/useUserProfile';
 
 type UserProfileRouteParams = {
   username: string;
@@ -16,13 +17,12 @@ const ProfileTab: React.FC = () => {
   const route = useRoute<ProfileTabRouteProp>();
   const { username } = route.params;
 
-  const user = userData.find(user=>user.username===username);
+  const { user , userRecipes }= useUserProfile(username);
 
   if (!user) {
     return <Text>User not found</Text>;
   }
 
-  const userRecipes = recipes.filter(recipe => recipe.author === user.username);
 
   return (
     <View style={styles.container}>
