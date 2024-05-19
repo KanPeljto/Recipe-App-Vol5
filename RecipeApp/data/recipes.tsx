@@ -27,6 +27,8 @@ export const recipes = [
       'Simmer for 1-2 hours until beef is tender and stew is thickened.',
       'Serve hot and enjoy!',
     ],
+    author:'jayjay123'
+
   },
   {
     id: 3,
