@@ -14,6 +14,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import RecipesTab from './components/RecipesTab';
 import { createStackNavigator } from '@react-navigation/stack';
+import store from './store/store';
+import { Provider } from 'react-redux';
+
 
 const Tab = createMaterialTopTabNavigator();
 const Stack= createStackNavigator<any>();
@@ -30,6 +33,7 @@ const RecipeStack=()=>{
 
 const App: React.FC = () => {
   return (
+    <Provider store={store}>
     <View style={styles.container}>
       <NavigationContainer>
         <Tab.Navigator style={styles.tabNavigator}>
@@ -39,6 +43,7 @@ const App: React.FC = () => {
         </Tab.Navigator>
       </NavigationContainer>
     </View>
+    </Provider>
   );
 };
 

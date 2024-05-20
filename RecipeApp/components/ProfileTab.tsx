@@ -30,7 +30,7 @@ const ProfileTab: React.FC = () => {
        
       </View>
       <View style={styles.profileContainer}>
-        <Image source={user.avatar} style={styles.avatar} />
+      <Image source={{ uri: user.avatar }} style={styles.avatar} />
         <View style={styles.userInfo}>
           <Text style={styles.name}>{user.username}</Text>
           <Text style={styles.age}>Name: {user.name}</Text>

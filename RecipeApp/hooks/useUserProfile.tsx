@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import { userData } from "../data/userinfo";
 import { recipes } from "../data/recipes";
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser } from "../slices/userSlice";
+import { setUserRecipes } from "../slices/userSlice";
+import { RootState } from "../store/types";
+import { UserState } from "../store/types";
+
 
 export const useUserProfile = (username: string) => {
-    const [user, setUser] = useState(null);
-    const [userRecipes, setUserRecipes] = useState([]);
+    const dispatch= useDispatch();
+   
+    const {user,userRecipes}= useSelector((state:RootState)=>state.user);
 
     useEffect(() => {
         const foundUser = userData.find(user => user.username === username);
-        setUser(foundUser);
+        dispatch(setUser(foundUser));
 
         if (foundUser) {
             const userRecipes = recipes.filter(recipe => recipe.author === foundUser.username);
-            setUserRecipes(userRecipes);
+            dispatch(setUserRecipes(userRecipes));
         }
     }, [username]);
 
