@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   box: {
+    marginBottom:100,
     width: 200,
     height: 50,
     justifyContent: 'center',
