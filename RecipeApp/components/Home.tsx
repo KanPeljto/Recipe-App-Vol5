@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { fetchRandomRecipes } from '../services/apiService';
-
+import { Card } from '@rneui/base';
 const Home: React.FC = () => {
   const navigation = useNavigation<any>();
   const [recipes, setRecipes] = useState<any[]>([]);
@@ -47,10 +47,10 @@ const Home: React.FC = () => {
       </View>
       <ScrollView horizontal={true} style={styles.recipeScrollView}>
         {recipes.map(recipe => (
-          <View key={recipe.id} style={styles.recipeContainer}>
-            <Image source={{ uri: recipe.image }} style={styles.recipeImage} />
-            <Text style={styles.recipeTitle}>{recipe.title}</Text>
-          </View>
+          <Card key={recipe.id} containerStyle={styles.recipeContainer}>
+            <Card.Title style={styles.recipeTitle}>{recipe.title}</Card.Title>
+            <Card.Image source={{ uri: recipe.image }} style={styles.recipeImage} />
+          </Card>
         ))}
       </ScrollView>
       <View style={styles.aboutContainer}>
