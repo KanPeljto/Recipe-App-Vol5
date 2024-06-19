@@ -1,41 +1,68 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { recipes } from '../data/recipes';
-import NavigationBar from './NavigationBar';
-import {createStackNavigator} from '@react-navigation/stack';
-import RecipesTab from './RecipesTab';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-
+import { fetchRandomRecipes } from '../services/apiService';
 
 const Home: React.FC = () => {
-  const navigation= useNavigation<any>();
+  const navigation = useNavigation<any>();
+  const [recipes, setRecipes] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getRandomRecipes = async () => {
+      try {
+        const recipes = await fetchRandomRecipes();
+        setRecipes(recipes);
+      } catch (error) {
+        setError('Failed to fetch recipes');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getRandomRecipes();
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={styles.loaderContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.loaderContainer}>
+        <Text>{error}</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      {/* <Image source={require('../assets/background3.jpeg')} style={styles.backgroundImage}/> */}
       <View style={styles.messageContainer}>
         <Text style={styles.textMessage}>Welcome to RecipeApp!</Text>
       </View>
       <ScrollView horizontal={true} style={styles.recipeScrollView}>
-  {recipes.map(recipe => (
-    <View key={recipe.id} style={styles.recipeContainer}>
-      <Image source={recipe.image} style={styles.recipeImage} />
-      <Text style={styles.calorieText}>Only {recipe.calories} calories</Text>
-    </View>
-  ))}
-</ScrollView>
-
-
+        {recipes.map(recipe => (
+          <View key={recipe.id} style={styles.recipeContainer}>
+            <Image source={{ uri: recipe.image }} style={styles.recipeImage} />
+            <Text style={styles.recipeTitle}>{recipe.title}</Text>
+          </View>
+        ))}
+      </ScrollView>
       <View style={styles.aboutContainer}>
         <Text style={styles.aboutText}>Recipe App is an application that provides you with new recipe ideas.</Text>
       </View>
-
-      <TouchableOpacity style={styles.box} onPress={()=>navigation.navigate("Recipes")}>
+      <TouchableOpacity style={styles.box} onPress={() => navigation.navigate("Recipes")}>
         <Text style={styles.textMessage}>See More</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -43,6 +70,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
+  },
+  loaderContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textMessage: {
     color: 'darkorange',
@@ -86,16 +118,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   box: {
-    marginBottom:100,
+    marginBottom: 100,
     width: 200,
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'darkgreen',
     borderRadius: 8,
+    marginEnd:30
   },
+  recipeTitle:{
+    marginTop: 5,
+    textAlign: 'justify',
+    color: 'darkgray',
+    fontWeight: 'bold',
+    marginEnd: 10,
+    width:200
+  }
 });
 
-
 export default Home;
-  
