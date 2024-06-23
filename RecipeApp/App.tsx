@@ -10,65 +10,50 @@ import CategoryIcons from './components/CategoryIcons';
 import ProfileTab from './components/ProfileTab';
 import Register from './components/Register';
 import Login from './components/Login';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import RecipesTab from './components/RecipesTab';
+import { createStackNavigator } from '@react-navigation/stack';
+import store from './store/store';
+import { Provider } from 'react-redux';
 
 
-//I had a lot of issues making the repository and then later creating a new branch, 
-//for some reason it would commit to a project from last year? 
-//So i commited regularily in the main branch, 
-//but the future branches will be created normally as i now have the main branch to use as source 
+const Tab = createMaterialTopTabNavigator();
+const Stack= createStackNavigator<any>();
+
+const RecipeStack=()=>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name='RecipesTab' component={RecipesTab}/>
+      <Stack.Screen name="RecipeDetails" component={RecipeDetails} />
+      <Stack.Screen name="ProfileTab" component={ProfileTab}/>
+    </Stack.Navigator>
+  )
+}
 
 const App: React.FC = () => {
   return (
+    <Provider store={store}>
     <View style={styles.container}>
-      {/* <Image 
-        source={require('./assets/central-icon.png')}
-        style={styles.icon}
-      /> */}
-      <NavigationBar/>
-      {/* <Home/> */}
-      {/* <ScrollView style={styles.scrollView}>
-       
-      </ScrollView> */}
-      {/* <Favorites/> */}
-      {/* <CategoryIcons/> */}
-      {/* {recipes.map(recipe => (
-          <View key={recipe.id}>
-            <RecipeCard recipe={recipe} />
-          </View>
-        ))} */}
-
-      <RecipeDetails recipe={recipes[0]} />
-
-        {/* <Register/> */}
-
-        {/* <Login/> */}
-
-        
-
-      
-
-       {/* <ProfileTab/> */}
+      <NavigationContainer>
+        <Tab.Navigator style={styles.tabNavigator}>
+          <Tab.Screen name='Home' component={Home}/>
+          <Tab.Screen name='Recipes' component={RecipeStack} />
+          {/* <Tab.Screen name='Profile' component={ProfileTab}/> */}
+        </Tab.Navigator>
+      </NavigationContainer>
     </View>
+    </Provider>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    padding: 10,
+    flex: 1,
     backgroundColor: '#f5fcff',
   },
-  icon: {
-    width: 50,
-    height: 50,
-    marginBottom: 40,
-    backgroundColor: 'red',
-  },
-  scrollView: {
-    width: '80%',
+  tabNavigator: {
+    flex: 1,
   },
 });
 
